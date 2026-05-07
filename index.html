@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ticketmaster Coupon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #e8f4fb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .notif-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1.5px solid #d6eaf5;
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      animation: slideDown 0.5s ease both;
+    }
+
+    .notif-pill .ticket-icon {
+      display: inline-flex;
+      background: #f5c518;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: 900;
+      color: #333;
+    }
+
+    .notif-pill .amount { color: #00a2e8; font-weight: 800; }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 900;
+      font-style: italic;
+      color: #00a2e8;
+      letter-spacing: -1px;
+      animation: fadeIn 0.6s 0.1s ease both;
+    }
+
+    .logo sup { font-size: 14px; font-style: normal; font-weight: 700; vertical-align: super; }
+
+    .card {
+      width: 100%;
+      background: #dff0fa;
+      border-radius: 28px;
+      padding: 32px 28px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #222;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge .dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #26d07c;
+      flex-shrink: 0;
+      animation: pulse 1.5s infinite;
+    }
+
+    .headline { text-align: center; line-height: 1.18; }
+
+    .headline .line1 {
+      display: block;
+      font-size: clamp(26px, 7vw, 36px);
+      font-weight: 800;
+      color: #0d2d4a;
+    }
+
+    .headline .line2 {
+      display: block;
+      font-size: clamp(30px, 8.5vw, 44px);
+      font-weight: 900;
+      color: #0d2d4a;
+    }
+
+    .headline .line2 .amount { color: #00a2e8; font-style: italic; }
+
+    .steps { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+
+    .step { display: flex; align-items: flex-start; gap: 16px; }
+
+    .step-num {
+      font-size: 13px; font-weight: 800;
+      color: #00a2e8; min-width: 24px; padding-top: 2px;
+    }
+
+    .step-text {
+      font-size: clamp(15px, 4vw, 17px);
+      font-weight: 700; color: #0d2d4a; line-height: 1.4;
+    }
+
+    .cta-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00b8f5 0%, #0091d5 100%);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 20px 0;
+      font-size: clamp(18px, 5vw, 22px);
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(0,162,232,0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,162,232,0.45); }
+    .cta-btn:active { transform: translateY(0); }
+
+    .disclaimer { font-size: 13px; font-weight: 600; color: #4499cc; text-align: center; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(38,208,124,0.5); }
+      50%       { box-shadow: 0 0 0 6px rgba(38,208,124,0); }
+    }
+
+    @media (max-width: 360px) {
+      .card { padding: 24px 18px 28px; }
+      .logo { font-size: 26px; }
+      .notif-pill { font-size: 12px; padding: 8px 14px; }
+    }
+
+    @media (min-width: 600px) {
+      body { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="notif-pill" id="notif">
+  <span class="ticket-icon">TM</span>
+  <span id="notif-text"></span>
+</div>
+
+<style>
+  #notif {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    /* إلغاء أي animation قديمة */
+    animation: none !important;
+  }
+</style>
+
+<script>
+  const names = [
+    "Violet G.", "James T.", "Emily R.", "Michael B.", "Sarah K.",
+    "Chris L.", "Ashley M.", "Daniel W.", "Jessica H.", "Ryan P.",
+    "Amanda C.", "Tyler N.", "Brittany S.", "Joshua F.", "Megan D.",
+    "Brandon E.", "Lauren A.", "Kevin O.", "Stephanie J.", "Nathan V."
+  ];
+
+  const amounts = [850, 900, 950, 750, 1000, 800, 700, 600];
+
+  function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function showNotif() {
+    const pill = document.getElementById("notif");
+    const text = document.getElementById("notif-text");
+
+    // ضع النص الجديد
+    text.innerHTML = `${getRandom(names)} just claimed a <span class="amount">$${getRandom(amounts)}</span> coupon`;
+
+    // --- ظهور ---
+    pill.style.opacity = "1";
+    pill.style.transform = "translateY(0)";
+
+    // بعد 3 ثواني يختفي
+    setTimeout(() => {
+      pill.style.opacity = "0";
+      pill.style.transform = "translateY(-8px)";
+
+      // ينتظر 3 ثواني فارغة ثم يظهر الجديد
+      setTimeout(showNotif, 3000);
+
+    }, 3000);
+  }
+
+  // أول ظهور بعد ثانية واحدة
+  setTimeout(showNotif, 1000);
+</script>
+
+    <div class="logo">ticketmaster<sup>®</sup></div>
+
+    <div class="card">
+      <div class="badge">
+        <span class="dot"></span>
+        600+ Users Claimed So Far
+      </div>
+
+      <div class="headline">
+        <span class="line1">Get up to a</span>
+        <span class="line2"><span class="amount">$1,000</span> Coupon</span>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <span class="step-text">Tap "Start now" below</span>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <span class="step-text">Verify your email &amp; details</span>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <span class="step-text">Complete 3–5 sponsored deals</span>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <span class="step-text">Receive your coupon</span>
+        </div>
+      </div>
+
+      <a href="https://linkthem.net/aff_c?offer_id=3329&aff_id=181627" class="cta-btn" style="text-decoration:none; display:block; text-align:center;">Start now</a>
+
+      <p class="disclaimer">Sponsored deals completion required for eligibility.</p>
+    </div>
+
+  </div>
+</body>
+</html>
